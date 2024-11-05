@@ -8,32 +8,57 @@ class Fimber {
 
   /// Logs VERBOSE level [message]
   /// with optional exception and stacktrace
-  static void v(String message, {dynamic ex, StackTrace? stacktrace}) {
-    log("V", message, ex: ex, stacktrace: stacktrace);
+  static void v(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    log("V", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
 
   /// Logs DEBUG level [message]
   /// with optional exception and stacktrace
-  static void d(String message, {dynamic ex, StackTrace? stacktrace}) {
-    log("D", message, ex: ex, stacktrace: stacktrace);
+  static void d(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    log("D", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
 
   /// Logs INFO level [message]
   /// with optional exception and stacktrace
-  static void i(String message, {dynamic ex, StackTrace? stacktrace}) {
-    log("I", message, ex: ex, stacktrace: stacktrace);
+  static void i(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    log("I", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
 
   /// Logs WARNING level [message]
   /// with optional exception and stacktrace
-  static void w(String message, {dynamic ex, StackTrace? stacktrace}) {
-    log("W", message, ex: ex, stacktrace: stacktrace);
+  static void w(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    log("W", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
 
   /// Logs ERROR level [message]
   /// with optional exception and stacktrace
-  static void e(String message, {dynamic ex, StackTrace? stacktrace}) {
-    log("E", message, ex: ex, stacktrace: stacktrace);
+  static void e(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    log("E", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
 
   /// Mute a log [level] for logging.
@@ -56,13 +81,21 @@ class Fimber {
     String? tag,
     dynamic ex,
     StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
   }) {
     if (_muteLevels.contains(level)) {
       return; // skip logging if muted.
     }
     final loggersForTree = _trees[level];
     for (final logger in loggersForTree ?? <LogTree>[]) {
-      logger.log(level, message, tag: tag, ex: ex, stacktrace: stacktrace);
+      logger.log(
+        level,
+        message,
+        tag: tag,
+        ex: ex,
+        stacktrace: stacktrace,
+        attributes: attributes,
+      );
     }
   }
 
@@ -146,12 +179,12 @@ class DebugTree extends LogTree {
     "D": ColorizeStyle([AnsiStyle.foreground(AnsiColor.green)]),
     "W": ColorizeStyle([
       AnsiStyle.foreground(AnsiColor.yellow),
-      AnsiStyle.background(AnsiColor.black)
+      AnsiStyle.background(AnsiColor.black),
     ]),
     "E": ColorizeStyle([
       AnsiStyle.bright(AnsiColor.white),
-      AnsiStyle.background(AnsiColor.red)
-    ])
+      AnsiStyle.background(AnsiColor.red),
+    ]),
   };
 
   /// Log levels processed by this [DebugTree]
@@ -203,6 +236,7 @@ class DebugTree extends LogTree {
     String? tag,
     dynamic ex,
     StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
   }) {
     final logTag = tag ?? LogTree.getTag();
     final logLineBuilder = StringBuffer("$level\t$logTag:\t $message");
@@ -290,6 +324,7 @@ abstract class LogTree {
     String? tag,
     dynamic ex,
     StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
   });
 
   /// Gets levels of logging serviced by this [LogTree]
@@ -374,32 +409,92 @@ class FimberLog {
 
   /// Logs VERBOSE level [message]
   /// with optional exception and stacktrace
-  void v(String message, {dynamic ex, StackTrace? stacktrace}) {
-    _log("V", tag, message, ex: ex, stacktrace: stacktrace);
+  void v(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    _log(
+      "V",
+      tag,
+      message,
+      ex: ex,
+      stacktrace: stacktrace,
+      attributes: attributes,
+    );
   }
 
   /// Logs DEBUG level [message]
   /// with optional exception and stacktrace
-  void d(String message, {dynamic ex, StackTrace? stacktrace}) {
-    _log("D", tag, message, ex: ex, stacktrace: stacktrace);
+  void d(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    _log(
+      "D",
+      tag,
+      message,
+      ex: ex,
+      stacktrace: stacktrace,
+      attributes: attributes,
+    );
   }
 
   /// Logs INFO level [message]
   /// with optional exception and stacktrace
-  void i(String message, {dynamic ex, StackTrace? stacktrace}) {
-    _log("I", tag, message, ex: ex, stacktrace: stacktrace);
+  void i(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    _log(
+      "I",
+      tag,
+      message,
+      ex: ex,
+      stacktrace: stacktrace,
+      attributes: attributes,
+    );
   }
 
   /// Logs WARNING level [message]
   /// with optional exception and stacktrace
-  void w(String message, {dynamic ex, StackTrace? stacktrace}) {
-    _log("W", tag, message, ex: ex, stacktrace: stacktrace);
+  void w(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    _log(
+      "W",
+      tag,
+      message,
+      ex: ex,
+      stacktrace: stacktrace,
+      attributes: attributes,
+    );
   }
 
   /// Logs ERROR level [message]
   /// with optional exception and stacktrace
-  void e(String message, {dynamic ex, StackTrace? stacktrace}) {
-    _log("E", tag, message, ex: ex, stacktrace: stacktrace);
+  void e(
+    String message, {
+    dynamic ex,
+    StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
+  }) {
+    _log(
+      "E",
+      tag,
+      message,
+      ex: ex,
+      stacktrace: stacktrace,
+      attributes: attributes,
+    );
   }
 
   /// Logs [message] with [tag] and [level]
@@ -410,8 +505,16 @@ class FimberLog {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
   }) {
-    Fimber.log(level, message, tag: tag, ex: ex, stacktrace: stacktrace);
+    Fimber.log(
+      level,
+      message,
+      tag: tag,
+      ex: ex,
+      stacktrace: stacktrace,
+      attributes: attributes,
+    );
   }
 }
 
@@ -470,12 +573,12 @@ class CustomFormatTree extends LogTree {
     "D": ColorizeStyle([AnsiStyle.foreground(AnsiColor.green)]),
     "W": ColorizeStyle([
       AnsiStyle.foreground(AnsiColor.yellow),
-      AnsiStyle.background(AnsiColor.black)
+      AnsiStyle.background(AnsiColor.black),
     ]),
     "E": ColorizeStyle([
       AnsiStyle.bright(AnsiColor.white),
-      AnsiStyle.background(AnsiColor.red)
-    ])
+      AnsiStyle.background(AnsiColor.red),
+    ]),
   };
 
   List<String> _logLevels = defaultLevels;
@@ -544,6 +647,7 @@ class CustomFormatTree extends LogTree {
     String? tag,
     dynamic ex,
     StackTrace? stacktrace,
+    Map<String, dynamic>? attributes,
   }) {
     LogLineInfo logTag;
     logTag = LogTree.getLogLineInfo();
