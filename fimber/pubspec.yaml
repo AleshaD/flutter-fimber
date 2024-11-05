@@ -1,7 +1,7 @@
-name: fimber
+name: ds_fimber
 description: Extensible logging for Flutter - based on Timber on Android, using similar (as far as Dart lang allows) method API with same concepts for tree and planting logging tree.
-version: 0.7.0
-homepage: https://github.com/magillus/flutter-fimber/tree/master/fimber
+version: 0.1.0
+homepage: https://github.com/aleshad/flutter-fimber/tree/master/fimber
 
 environment:
   sdk: '>=2.12.0 <4.0.0'

@@ -1,4 +1,4 @@
-import 'package:fimber/fimber.dart';
+import 'package:ds_fimber/src/fimber_base.dart';
 import 'package:test/test.dart';
 
 void main() {

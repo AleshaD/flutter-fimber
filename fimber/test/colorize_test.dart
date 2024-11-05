@@ -1,4 +1,6 @@
-import 'package:fimber/fimber.dart';
+// ignore_for_file: avoid_print
+
+import 'package:ds_fimber/fimber.dart';
 import 'package:test/test.dart';
 
 void main() async {
@@ -49,13 +51,13 @@ void main() async {
     test("Test stylize", () {
       final style = ColorizeStyle([
         AnsiStyle(AnsiSelection.foreground, color: AnsiColor.green),
-        AnsiStyle(AnsiSelection.background, color: AnsiColor.blue)
+        AnsiStyle(AnsiSelection.background, color: AnsiColor.blue),
       ]);
       print(style.wrap("TEST GREEN ON blue"));
 
       final styleB = ColorizeStyle([
         AnsiStyle.background(AnsiColor.yellow),
-        AnsiStyle.foreground(AnsiColor.black)
+        AnsiStyle.foreground(AnsiColor.black),
       ]);
       print(styleB.wrap("Test black on yellow background"));
 
