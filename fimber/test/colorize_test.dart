@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:ds_fimber/fimber.dart';
+import 'package:ds_fimber/ds_fimber.dart';
 import 'package:test/test.dart';
 
 void main() async {

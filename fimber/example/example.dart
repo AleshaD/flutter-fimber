@@ -1,4 +1,4 @@
-import 'package:ds_fimber/fimber.dart';
+import 'package:ds_fimber/ds_fimber.dart';
 
 void main() {
   // plant a tree - DebugTree()
